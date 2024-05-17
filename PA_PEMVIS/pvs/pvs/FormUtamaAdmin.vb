@@ -1,5 +1,11 @@
-﻿Imports MySql.Data.MySqlClient
+﻿Imports System.Net
+Imports System.Windows.Forms.VisualStyles.VisualStyleElement
+Imports MySql.Data.MySqlClient
 Public Class FormUtamaAdmin
+    Private Sub FormUtamaAdmin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        tampilbarang()
+        aturGrid()
+    End Sub
     Sub kosongGrouptambah()
         tbTambahHarga.Clear()
         tbTambahMerek.Clear()
@@ -13,7 +19,6 @@ Public Class FormUtamaAdmin
         tbUbahStok.Clear()
     End Sub
     Sub tampilbarang()
-        DataGridViewAdmin.Rows.Clear()
         Dim dt As New DataTable
         Dim da As New MySqlDataAdapter("SELECT * FROM barang", CONN)
         da.Fill(dt)
@@ -74,8 +79,7 @@ Public Class FormUtamaAdmin
         End
     End Sub
 
-    Private Sub FormUtamaAdmin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        tampilbarang()
-        aturGrid()
+    Private Sub DataGridViewAdmin_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridViewAdmin.CellContentClick
+
     End Sub
 End Class

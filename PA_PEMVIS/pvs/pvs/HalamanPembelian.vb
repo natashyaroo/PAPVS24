@@ -1,87 +1,151 @@
 ﻿Imports MySql.Data.MySqlClient
+Imports System.Drawing.Printing
 
 Public Class HalamanPembelian
+    Private itemNama As String
+    Private itemMerek As String
+    Private itemJenis As String
+    Private itemStok As Integer
+    Private itemHarga As Decimal
+
     Private Sub HalamanPembelian_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Module1.koneksi()
+        koneksi()
         tampilbarang()
+        aturGrid()
     End Sub
 
-    Private Sub tampilbarang()
-        DataGridviewPembelian.Rows.Clear()
-        Module1.CMD = New MySqlCommand("SELECT * FROM barang", Module1.CONN)
-        Module1.RD = Module1.CMD.ExecuteReader()
-
-        While Module1.RD.Read()
-            Dim row As New DataGridViewRow()
-            row.CreateCells(DataGridviewPembelian)
-            row.Cells(0).Value = Module1.RD("id_barang")
-            row.Cells(1).Value = Module1.RD("nama_barang")
-            row.Cells(2).Value = Module1.RD("jenis_barang")
-            row.Cells(3).Value = Module1.RD("stok_barang")
-            row.Cells(4).Value = Module1.RD("harga_barang")
-            DataGridviewPembelian.Rows.Add(row)
-        End While
-
-        Module1.RD.Close()
+    Sub tampilbarang()
+        Dim dt As New DataTable
+        Dim da As New MySqlDataAdapter("SELECT * FROM barang", CONN)
+        da.Fill(dt)
+        DataGridviewPembelian.DataSource = dt
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Dim namaBarang As String = tbNamaBarang.Text.Trim()
-        Dim jumlahBarang As Integer
+    Sub aturGrid()
+        DataGridviewPembelian.Columns(0).Width = 60
+        DataGridviewPembelian.Columns(1).Width = 200
+        DataGridviewPembelian.Columns(0).HeaderText = "ID Barang"
+        DataGridviewPembelian.Columns(1).HeaderText = "Nama Barang"
+        DataGridviewPembelian.Columns(2).HeaderText = "Merek"
+        DataGridviewPembelian.Columns(3).HeaderText = "Jenis Barang"
+        DataGridviewPembelian.Columns(4).HeaderText = "Stok Barang"
+        DataGridviewPembelian.Columns(5).HeaderText = "Harga Barang"
+    End Sub
 
-        If Integer.TryParse(tbJumlah.Text, jumlahBarang) Then
-            Module1.CMD = New MySqlCommand("SELECT stok_barang, harga_barang FROM barang WHERE nama_barang = @namaBarang", Module1.CONN)
-            Module1.CMD.Parameters.AddWithValue("@namaBarang", namaBarang)
-            Module1.RD = Module1.CMD.ExecuteReader()
+    Private Sub tbIdBarang_TextChanged(sender As Object, e As EventArgs) Handles tbIdBarang.TextChanged
+        Dim idBarang As Integer
+        If Integer.TryParse(tbIdBarang.Text, idBarang) Then
+            Using cmd As New MySqlCommand("SELECT * FROM barang WHERE id_barang = @idBarang", CONN)
+                cmd.Parameters.AddWithValue("@idBarang", idBarang)
+                Try
+                    If CONN.State = ConnectionState.Closed Then
+                        CONN.Open()
+                    End If
 
-            If Module1.RD.HasRows Then
-                Module1.RD.Read()
-                Dim stokBarang As Integer = Module1.RD("stok_barang")
-                Dim hargaBarang As Decimal = Module1.RD("harga_barang")
-
-                If jumlahBarang > stokBarang Then
-                    MessageBox.Show("Jumlah barang melebihi stok yang tersedia. Silakan masukkan jumlah yang valid.", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                Else
-                    Dim totalHarga As Decimal = jumlahBarang * hargaBarang
-                    tbTotal.Text = totalHarga.ToString()
-
-                    Dim query As String = "INSERT INTO pembelian (nama_barang, jumlah, total_harga) VALUES (@namaBarang, @jumlahBarang, @totalHarga)"
-                    Module1.CMD = New MySqlCommand(query, Module1.CONN)
-                    Module1.CMD.Parameters.AddWithValue("@namaBarang", namaBarang)
-                    Module1.CMD.Parameters.AddWithValue("@jumlahBarang", jumlahBarang)
-                    Module1.CMD.Parameters.AddWithValue("@totalHarga", totalHarga)
-
-                    Try
-                        Module1.CMD.ExecuteNonQuery()
-                        MessageBox.Show("Pembelian berhasil disimpan.", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information)
-
-                        Dim updateQuery As String = "UPDATE barang SET stok_barang = stok_barang - @jumlahBarang WHERE nama_barang = @namaBarang"
-                        Module1.CMD = New MySqlCommand(updateQuery, Module1.CONN)
-                        Module1.CMD.Parameters.AddWithValue("@jumlahBarang", jumlahBarang)
-                        Module1.CMD.Parameters.AddWithValue("@namaBarang", namaBarang)
-                        Module1.CMD.ExecuteNonQuery()
-
-
-                        tbNamaBarang.Clear()
-                        tbJumlah.Clear()
-                        tbTotal.Clear()
-
-                        tampilbarang()
-                    Catch ex As MySqlException
-                        MessageBox.Show("Terjadi kesalahan saat menyimpan data pembelian: " & ex.Message, "Kesalahan", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    End Try
-                End If
-            Else
-                MessageBox.Show("Nama barang tidak ditemukan dalam database. Silakan masukkan nama barang yang valid.", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            End If
-
-            Module1.RD.Close()
+                    Using reader As MySqlDataReader = cmd.ExecuteReader()
+                        If reader.HasRows Then
+                            reader.Read()
+                            itemNama = reader("nama_barang").ToString()
+                            itemMerek = reader("merek").ToString()
+                            itemJenis = reader("jenis_barang").ToString()
+                            itemStok = Convert.ToInt32(reader("stok_barang"))
+                            itemHarga = Convert.ToDecimal(reader("harga_barang"))
+                        Else
+                            ClearItemData()
+                        End If
+                    End Using
+                Catch ex As Exception
+                    MessageBox.Show("Error: " & ex.Message)
+                Finally
+                    If CONN.State = ConnectionState.Open Then
+                        CONN.Close()
+                    End If
+                End Try
+            End Using
         Else
-            MessageBox.Show("Jumlah barang yang dimasukkan tidak valid. Silakan masukkan angka yang valid.", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            ClearItemData()
         End If
     End Sub
 
-    Private Sub DataGridviewPembelian_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridviewPembelian.CellContentClick
+    Private Sub tbJumlah_TextChanged(sender As Object, e As EventArgs) Handles tbJumlah.TextChanged
+        Dim jumlahBeli As Integer
+        If Integer.TryParse(tbJumlah.Text, jumlahBeli) Then
+            If jumlahBeli <= itemStok Then
+                Dim totalHarga As Decimal = jumlahBeli * itemHarga
+                tbTotal.Text = totalHarga.ToString("C2")
+            Else
+                tbTotal.Text = "Jumlah melebihi stok!"
+            End If
+        Else
+            tbTotal.Text = ""
+        End If
+    End Sub
 
+    Private Sub btnBayar_Click(sender As Object, e As EventArgs) Handles btnBayar.Click
+        Dim jumlahBeli As Integer
+        If Not Integer.TryParse(tbJumlah.Text, jumlahBeli) Then
+            MessageBox.Show("Masukkan jumlah pembelian yang valid.")
+            Return
+        End If
+
+        If jumlahBeli > itemStok Then
+            MessageBox.Show("Jumlah pembelian melebihi stok barang.")
+            Return
+        End If
+
+        PrintDialog1.Document = PrintDocument1
+        If PrintDialog1.ShowDialog() = DialogResult.OK Then
+            PrintDocument1.Print()
+        End If
+    End Sub
+
+    Private Sub PrintDocument1_PrintPage(sender As Object, e As PrintPageEventArgs) Handles PrintDocument1.PrintPage
+        Dim font As New Font("Arial", 12)
+        Dim titleFont As New Font("Arial", 16, FontStyle.Bold)
+        Dim footerFont As New Font("Arial", 12, FontStyle.Italic)
+        Dim y As Integer = e.MarginBounds.Top
+        Dim centerX As Integer = e.MarginBounds.Left + (e.MarginBounds.Width / 2)
+
+        Dim title As String = "Struk Belanja"
+        Dim titleSize As SizeF = e.Graphics.MeasureString(title, titleFont)
+        Dim titleX As Integer = centerX - (titleSize.Width / 2)
+        e.Graphics.DrawString(title, titleFont, Brushes.Black, titleX, y)
+        y += titleSize.Height + 20
+
+        Dim content As String
+        content = "Nama Barang: " & itemNama
+        e.Graphics.DrawString(content, font, Brushes.Black, e.MarginBounds.Left, y)
+        y += 30
+        content = "Merek: " & itemMerek
+        e.Graphics.DrawString(content, font, Brushes.Black, e.MarginBounds.Left, y)
+        y += 30
+        content = "Jenis Barang: " & itemJenis
+        e.Graphics.DrawString(content, font, Brushes.Black, e.MarginBounds.Left, y)
+        y += 30
+        content = "Jumlah Beli: " & tbJumlah.Text
+        e.Graphics.DrawString(content, font, Brushes.Black, e.MarginBounds.Left, y)
+        y += 30
+        content = "Total Harga: " & tbTotal.Text
+        e.Graphics.DrawString(content, font, Brushes.Black, e.MarginBounds.Left, y)
+        y += 30
+
+        Dim footer As String = "Terimakasih Sudah Berbelanja"
+        Dim footerSize As SizeF = e.Graphics.MeasureString(footer, footerFont)
+        Dim footerY As Integer = e.MarginBounds.Bottom - footerSize.Height
+        Dim footerX As Integer = centerX - (footerSize.Width / 2)
+        e.Graphics.DrawString(footer, footerFont, Brushes.Black, footerX, footerY)
+    End Sub
+
+    Private Sub ClearItemData()
+        itemNama = ""
+        itemMerek = ""
+        itemJenis = ""
+        itemStok = 0
+        itemHarga = 0
+        tbTotal.Text = ""
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Me.Hide()
     End Sub
 End Class

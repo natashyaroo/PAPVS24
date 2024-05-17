@@ -18,4 +18,4 @@ C:\Users\swift\OneDrive\Documents\PA_PEMVIS\pvs\pvs\obj\Debug\pvs.xml
 C:\Users\swift\OneDrive\Documents\PA_PEMVIS\pvs\pvs\obj\Debug\pvs.pdb
 C:\Users\swift\OneDrive\Documents\PA_PEMVIS\pvs\pvs\obj\Debug\pvs.HalamanUtamaUser.resources
 C:\Users\swift\OneDrive\Documents\PA_PEMVIS\pvs\pvs\obj\Debug\pvs.FormRegis.resources
-C:\Users\swift\OneDrive\Documents\PA_PEMVIS\pvs\pvs\obj\Debug\pvs.Login.resources
+C:\Users\swift\OneDrive\Documents\PA_PEMVIS\pvs\pvs\obj\Debug\pvs.Struk.resources

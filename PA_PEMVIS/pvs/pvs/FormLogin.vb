@@ -19,13 +19,13 @@ Public Class FormLogin
                             reader.Read()
                             Dim userType As String = reader("usertype").ToString()
 
-                            If usertype = "admin" Then
+                            If userType = "admin" Then
                                 MessageBox.Show("Login berhasil sebagai admin!")
                                 Me.Hide()
                                 Dim formUtamaAdmin As New FormUtamaAdmin()
                                 formUtamaAdmin.ShowDialog()
 
-                            ElseIf usertype = "user" Then
+                            ElseIf userType = "user" Then
                                 MessageBox.Show("Login berhasil sebagai user!")
                                 Me.Hide()
                                 Dim HalamanUtamaUser As New HalamanUtamaUser()

@@ -25,13 +25,16 @@ Partial Class HalamanPembelian
         Me.DataGridviewPembelian = New System.Windows.Forms.DataGridView()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.tbTotal = New System.Windows.Forms.TextBox()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.tbNamaBarang = New System.Windows.Forms.TextBox()
+        Me.btnBayar = New System.Windows.Forms.Button()
+        Me.tbIdBarang = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.tbJumlah = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.PrintDialog1 = New System.Windows.Forms.PrintDialog()
+        Me.PrintDocument1 = New System.Drawing.Printing.PrintDocument()
+        Me.Button1 = New System.Windows.Forms.Button()
         CType(Me.DataGridviewPembelian, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
@@ -50,8 +53,8 @@ Partial Class HalamanPembelian
         'GroupBox1
         '
         Me.GroupBox1.Controls.Add(Me.tbTotal)
-        Me.GroupBox1.Controls.Add(Me.Button1)
-        Me.GroupBox1.Controls.Add(Me.tbNamaBarang)
+        Me.GroupBox1.Controls.Add(Me.btnBayar)
+        Me.GroupBox1.Controls.Add(Me.tbIdBarang)
         Me.GroupBox1.Controls.Add(Me.Label7)
         Me.GroupBox1.Controls.Add(Me.Label4)
         Me.GroupBox1.Controls.Add(Me.tbJumlah)
@@ -71,27 +74,28 @@ Partial Class HalamanPembelian
         Me.tbTotal.Location = New System.Drawing.Point(104, 375)
         Me.tbTotal.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.tbTotal.Name = "tbTotal"
+        Me.tbTotal.ReadOnly = True
         Me.tbTotal.Size = New System.Drawing.Size(264, 33)
         Me.tbTotal.TabIndex = 15
         '
-        'Button1
+        'btnBayar
         '
-        Me.Button1.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(157, 492)
-        Me.Button1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(145, 46)
-        Me.Button1.TabIndex = 14
-        Me.Button1.Text = "Bayar"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.btnBayar.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnBayar.Location = New System.Drawing.Point(157, 492)
+        Me.btnBayar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.btnBayar.Name = "btnBayar"
+        Me.btnBayar.Size = New System.Drawing.Size(145, 46)
+        Me.btnBayar.TabIndex = 14
+        Me.btnBayar.Text = "Bayar"
+        Me.btnBayar.UseVisualStyleBackColor = True
         '
-        'tbNamaBarang
+        'tbIdBarang
         '
-        Me.tbNamaBarang.Location = New System.Drawing.Point(104, 126)
-        Me.tbNamaBarang.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.tbNamaBarang.Name = "tbNamaBarang"
-        Me.tbNamaBarang.Size = New System.Drawing.Size(264, 33)
-        Me.tbNamaBarang.TabIndex = 4
+        Me.tbIdBarang.Location = New System.Drawing.Point(104, 126)
+        Me.tbIdBarang.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.tbIdBarang.Name = "tbIdBarang"
+        Me.tbIdBarang.Size = New System.Drawing.Size(264, 33)
+        Me.tbIdBarang.TabIndex = 4
         '
         'Label7
         '
@@ -111,9 +115,9 @@ Partial Class HalamanPembelian
         Me.Label4.Location = New System.Drawing.Point(165, 82)
         Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(130, 23)
+        Me.Label4.Size = New System.Drawing.Size(99, 23)
         Me.Label4.TabIndex = 5
-        Me.Label4.Text = "Nama Barang"
+        Me.Label4.Text = "ID Barang"
         '
         'tbJumlah
         '
@@ -146,11 +150,29 @@ Partial Class HalamanPembelian
         Me.Label1.Text = "Barang Yang Tersedia"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
+        'PrintDialog1
+        '
+        Me.PrintDialog1.UseEXDialog = True
+        '
+        'PrintDocument1
+        '
+        '
+        'Button1
+        '
+        Me.Button1.Font = New System.Drawing.Font("Arial", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button1.Location = New System.Drawing.Point(1151, 898)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(97, 31)
+        Me.Button1.TabIndex = 16
+        Me.Button1.Text = "Kembali"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
         'HalamanPembelian
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1388, 1035)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.DataGridviewPembelian)
         Me.Controls.Add(Me.Label1)
@@ -166,12 +188,15 @@ Partial Class HalamanPembelian
 
     Friend WithEvents DataGridviewPembelian As DataGridView
     Friend WithEvents GroupBox1 As GroupBox
-    Friend WithEvents Button1 As Button
-    Friend WithEvents tbNamaBarang As TextBox
+    Friend WithEvents btnBayar As Button
+    Friend WithEvents tbIdBarang As TextBox
     Friend WithEvents Label7 As Label
     Friend WithEvents Label4 As Label
     Friend WithEvents tbJumlah As TextBox
     Friend WithEvents Label6 As Label
     Friend WithEvents tbTotal As TextBox
     Friend WithEvents Label1 As Label
+    Friend WithEvents PrintDialog1 As PrintDialog
+    Friend WithEvents PrintDocument1 As Printing.PrintDocument
+    Friend WithEvents Button1 As Button
 End Class

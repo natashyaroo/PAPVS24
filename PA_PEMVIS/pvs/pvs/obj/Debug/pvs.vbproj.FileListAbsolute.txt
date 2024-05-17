@@ -7,7 +7,6 @@ C:\Users\swift\OneDrive\Documents\PA_PEMVIS\pvs\pvs\obj\Debug\pvs.Resources.reso
 C:\Users\swift\OneDrive\Documents\PA_PEMVIS\pvs\pvs\obj\Debug\pvs.vbproj.GenerateResource.cache
 C:\Users\swift\OneDrive\Documents\PA_PEMVIS\pvs\pvs\obj\Debug\pvs.vbproj.CoreCompileInputs.cache
 C:\Users\swift\OneDrive\Documents\PA_PEMVIS\pvs\pvs\obj\Debug\pvs.FormLogin.resources
-C:\Users\swift\OneDrive\Documents\PA_PEMVIS\pvs\pvs\obj\Debug\pvs.FormRegistrasi.resources
 C:\Users\swift\OneDrive\Documents\PA_PEMVIS\pvs\pvs\bin\Debug\pvs.exe.config
 C:\Users\swift\OneDrive\Documents\PA_PEMVIS\pvs\pvs\bin\Debug\pvs.exe
 C:\Users\swift\OneDrive\Documents\PA_PEMVIS\pvs\pvs\bin\Debug\pvs.pdb
@@ -18,3 +17,5 @@ C:\Users\swift\OneDrive\Documents\PA_PEMVIS\pvs\pvs\obj\Debug\pvs.exe
 C:\Users\swift\OneDrive\Documents\PA_PEMVIS\pvs\pvs\obj\Debug\pvs.xml
 C:\Users\swift\OneDrive\Documents\PA_PEMVIS\pvs\pvs\obj\Debug\pvs.pdb
 C:\Users\swift\OneDrive\Documents\PA_PEMVIS\pvs\pvs\obj\Debug\pvs.HalamanUtamaUser.resources
+C:\Users\swift\OneDrive\Documents\PA_PEMVIS\pvs\pvs\obj\Debug\pvs.FormRegis.resources
+C:\Users\swift\OneDrive\Documents\PA_PEMVIS\pvs\pvs\obj\Debug\pvs.Login.resources

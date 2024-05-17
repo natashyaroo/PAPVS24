@@ -1,4 +1,4 @@
-﻿Imports System.Data.SqlClient
+﻿
 Imports MySql.Data.MySqlClient
 Public Class FormLogin
     Private Sub Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -10,22 +10,22 @@ Public Class FormLogin
         Using conn As New MySqlConnection(connStr)
             Try
                 conn.Open()
-                Dim query As String = "SELECT UserType FROM akun WHERE Username = @username AND Password = @password"
+                Dim query As String = "SELECT usertype FROM akun WHERE username = @username AND password = @password"
                 Using cmd As New MySqlCommand(query, conn)
-                    cmd.Parameters.AddWithValue("@username", tbUsername.Text)
+                    cmd.Parameters.AddWithValue("@username", tbUsernameLogin.Text)
                     cmd.Parameters.AddWithValue("@password", tbPassword.Text)
                     Using reader As MySqlDataReader = cmd.ExecuteReader()
                         If reader.HasRows Then
                             reader.Read()
-                            Dim userType As String = reader("UserType").ToString()
+                            Dim userType As String = reader("usertype").ToString()
 
-                            If userType = "admin" Then
+                            If usertype = "admin" Then
                                 MessageBox.Show("Login berhasil sebagai admin!")
                                 Me.Hide()
                                 Dim formUtamaAdmin As New FormUtamaAdmin()
                                 formUtamaAdmin.ShowDialog()
 
-                            ElseIf userType = "user" Then
+                            ElseIf usertype = "user" Then
                                 MessageBox.Show("Login berhasil sebagai user!")
                                 Me.Hide()
                                 Dim HalamanUtamaUser As New HalamanUtamaUser()
@@ -46,7 +46,7 @@ Public Class FormLogin
 
 
     Private Sub Label3_Click(sender As Object, e As EventArgs) Handles Label3.Click
-        FormRegistrasi.Show()
+        FormRegis.Show()
         Me.Hide()
     End Sub
 End Class

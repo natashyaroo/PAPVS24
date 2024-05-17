@@ -22,16 +22,30 @@ Partial Class Etalase
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.DataGridEtalase = New System.Windows.Forms.DataGridView()
+        CType(Me.DataGridEtalase, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'etalase_toko
+        'DataGridEtalase
+        '
+        Me.DataGridEtalase.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridEtalase.Location = New System.Drawing.Point(126, 114)
+        Me.DataGridEtalase.Name = "DataGridEtalase"
+        Me.DataGridEtalase.Size = New System.Drawing.Size(393, 325)
+        Me.DataGridEtalase.TabIndex = 0
+        '
+        'Etalase
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(886, 598)
-        Me.Name = "etalase_toko"
+        Me.ClientSize = New System.Drawing.Size(992, 659)
+        Me.Controls.Add(Me.DataGridEtalase)
+        Me.Name = "Etalase"
         Me.Text = "etalase_toko"
+        CType(Me.DataGridEtalase, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
+
+    Friend WithEvents DataGridEtalase As DataGridView
 End Class

@@ -34,7 +34,11 @@ Partial Class FormUtamaAdmin
         Me.tbTambahHarga = New System.Windows.Forms.TextBox()
         Me.btnTambah = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.tbTambahStok = New System.Windows.Forms.TextBox()
+        Me.Label10 = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.tbUbahStok = New System.Windows.Forms.TextBox()
+        Me.Label12 = New System.Windows.Forms.Label()
         Me.tbUbahHarga = New System.Windows.Forms.TextBox()
         Me.btnUbah = New System.Windows.Forms.Button()
         Me.tbUbahNama = New System.Windows.Forms.TextBox()
@@ -48,10 +52,6 @@ Partial Class FormUtamaAdmin
         Me.btnHapus = New System.Windows.Forms.Button()
         Me.tbHapusNama = New System.Windows.Forms.TextBox()
         Me.Label11 = New System.Windows.Forms.Label()
-        Me.tbTambahStok = New System.Windows.Forms.TextBox()
-        Me.Label10 = New System.Windows.Forms.Label()
-        Me.tbUbahStok = New System.Windows.Forms.TextBox()
-        Me.Label12 = New System.Windows.Forms.Label()
         Me.btnKeluar = New System.Windows.Forms.Button()
         CType(Me.DataGridViewAdmin, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
@@ -63,9 +63,10 @@ Partial Class FormUtamaAdmin
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(68, 163)
+        Me.Label1.Location = New System.Drawing.Point(102, 251)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(99, 18)
+        Me.Label1.Size = New System.Drawing.Size(156, 27)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Data Barang "
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -73,26 +74,29 @@ Partial Class FormUtamaAdmin
         'DataGridViewAdmin
         '
         Me.DataGridViewAdmin.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridViewAdmin.Location = New System.Drawing.Point(71, 205)
+        Me.DataGridViewAdmin.Location = New System.Drawing.Point(106, 315)
+        Me.DataGridViewAdmin.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.DataGridViewAdmin.Name = "DataGridViewAdmin"
         Me.DataGridViewAdmin.RowHeadersWidth = 62
-        Me.DataGridViewAdmin.Size = New System.Drawing.Size(458, 531)
+        Me.DataGridViewAdmin.Size = New System.Drawing.Size(687, 817)
         Me.DataGridViewAdmin.TabIndex = 2
         '
         'tbTambahNama
         '
-        Me.tbTambahNama.Location = New System.Drawing.Point(20, 64)
+        Me.tbTambahNama.Location = New System.Drawing.Point(30, 98)
+        Me.tbTambahNama.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.tbTambahNama.Name = "tbTambahNama"
-        Me.tbTambahNama.Size = New System.Drawing.Size(177, 25)
+        Me.tbTambahNama.Size = New System.Drawing.Size(264, 33)
         Me.tbTambahNama.TabIndex = 4
         '
         'Label4
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Arial", 9.75!)
-        Me.Label4.Location = New System.Drawing.Point(20, 35)
+        Me.Label4.Location = New System.Drawing.Point(30, 54)
+        Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(86, 16)
+        Me.Label4.Size = New System.Drawing.Size(130, 23)
         Me.Label4.TabIndex = 5
         Me.Label4.Text = "Nama Barang"
         '
@@ -100,26 +104,29 @@ Partial Class FormUtamaAdmin
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Arial", 9.75!)
-        Me.Label5.Location = New System.Drawing.Point(234, 35)
+        Me.Label5.Location = New System.Drawing.Point(351, 54)
+        Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(88, 16)
+        Me.Label5.Size = New System.Drawing.Size(135, 23)
         Me.Label5.TabIndex = 7
         Me.Label5.Text = "Merek Barang"
         '
         'tbTambahMerek
         '
-        Me.tbTambahMerek.Location = New System.Drawing.Point(234, 64)
+        Me.tbTambahMerek.Location = New System.Drawing.Point(351, 98)
+        Me.tbTambahMerek.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.tbTambahMerek.Name = "tbTambahMerek"
-        Me.tbTambahMerek.Size = New System.Drawing.Size(177, 25)
+        Me.tbTambahMerek.Size = New System.Drawing.Size(264, 33)
         Me.tbTambahMerek.TabIndex = 6
         '
         'Label6
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Arial", 9.75!)
-        Me.Label6.Location = New System.Drawing.Point(20, 115)
+        Me.Label6.Location = New System.Drawing.Point(30, 177)
+        Me.Label6.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(82, 16)
+        Me.Label6.Size = New System.Drawing.Size(124, 23)
         Me.Label6.TabIndex = 9
         Me.Label6.Text = "Jenis Barang"
         '
@@ -127,34 +134,38 @@ Partial Class FormUtamaAdmin
         '
         Me.cbTambahJenis.FormattingEnabled = True
         Me.cbTambahJenis.Items.AddRange(New Object() {"Alat Pancing", "Joran", "Senar", "Mata Kail", "Pelet"})
-        Me.cbTambahJenis.Location = New System.Drawing.Point(20, 142)
+        Me.cbTambahJenis.Location = New System.Drawing.Point(30, 218)
+        Me.cbTambahJenis.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.cbTambahJenis.Name = "cbTambahJenis"
-        Me.cbTambahJenis.Size = New System.Drawing.Size(174, 26)
+        Me.cbTambahJenis.Size = New System.Drawing.Size(259, 35)
         Me.cbTambahJenis.TabIndex = 10
         '
         'Label7
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(237, 114)
+        Me.Label7.Location = New System.Drawing.Point(356, 175)
+        Me.Label7.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(86, 16)
+        Me.Label7.Size = New System.Drawing.Size(132, 23)
         Me.Label7.TabIndex = 12
         Me.Label7.Text = "Harga Barang"
         '
         'tbTambahHarga
         '
-        Me.tbTambahHarga.Location = New System.Drawing.Point(237, 143)
+        Me.tbTambahHarga.Location = New System.Drawing.Point(356, 220)
+        Me.tbTambahHarga.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.tbTambahHarga.Name = "tbTambahHarga"
-        Me.tbTambahHarga.Size = New System.Drawing.Size(177, 25)
+        Me.tbTambahHarga.Size = New System.Drawing.Size(264, 33)
         Me.tbTambahHarga.TabIndex = 11
         '
         'btnTambah
         '
         Me.btnTambah.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnTambah.Location = New System.Drawing.Point(277, 197)
+        Me.btnTambah.Location = New System.Drawing.Point(416, 303)
+        Me.btnTambah.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.btnTambah.Name = "btnTambah"
-        Me.btnTambah.Size = New System.Drawing.Size(75, 23)
+        Me.btnTambah.Size = New System.Drawing.Size(112, 35)
         Me.btnTambah.TabIndex = 13
         Me.btnTambah.Text = "Tambah"
         Me.btnTambah.UseVisualStyleBackColor = True
@@ -173,12 +184,33 @@ Partial Class FormUtamaAdmin
         Me.GroupBox1.Controls.Add(Me.Label5)
         Me.GroupBox1.Controls.Add(Me.Label6)
         Me.GroupBox1.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox1.Location = New System.Drawing.Point(570, 57)
+        Me.GroupBox1.Location = New System.Drawing.Point(855, 88)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(631, 243)
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.GroupBox1.Size = New System.Drawing.Size(946, 374)
         Me.GroupBox1.TabIndex = 14
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Tambah Data Barang"
+        '
+        'tbTambahStok
+        '
+        Me.tbTambahStok.Location = New System.Drawing.Point(656, 98)
+        Me.tbTambahStok.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.tbTambahStok.Name = "tbTambahStok"
+        Me.tbTambahStok.Size = New System.Drawing.Size(264, 33)
+        Me.tbTambahStok.TabIndex = 14
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Font = New System.Drawing.Font("Arial", 9.75!)
+        Me.Label10.Location = New System.Drawing.Point(656, 54)
+        Me.Label10.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(119, 23)
+        Me.Label10.TabIndex = 15
+        Me.Label10.Text = "Stok Barang"
         '
         'GroupBox2
         '
@@ -194,44 +226,69 @@ Partial Class FormUtamaAdmin
         Me.GroupBox2.Controls.Add(Me.Label8)
         Me.GroupBox2.Controls.Add(Me.Label9)
         Me.GroupBox2.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox2.Location = New System.Drawing.Point(570, 318)
+        Me.GroupBox2.Location = New System.Drawing.Point(855, 489)
+        Me.GroupBox2.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(631, 243)
+        Me.GroupBox2.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.GroupBox2.Size = New System.Drawing.Size(946, 374)
         Me.GroupBox2.TabIndex = 15
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Ubah Data Barang"
         '
+        'tbUbahStok
+        '
+        Me.tbUbahStok.Location = New System.Drawing.Point(660, 98)
+        Me.tbUbahStok.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.tbUbahStok.Name = "tbUbahStok"
+        Me.tbUbahStok.Size = New System.Drawing.Size(264, 33)
+        Me.tbUbahStok.TabIndex = 16
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Font = New System.Drawing.Font("Arial", 9.75!)
+        Me.Label12.Location = New System.Drawing.Point(660, 54)
+        Me.Label12.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(119, 23)
+        Me.Label12.TabIndex = 17
+        Me.Label12.Text = "Stok Barang"
+        '
         'tbUbahHarga
         '
-        Me.tbUbahHarga.Location = New System.Drawing.Point(237, 143)
+        Me.tbUbahHarga.Location = New System.Drawing.Point(356, 220)
+        Me.tbUbahHarga.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.tbUbahHarga.Name = "tbUbahHarga"
-        Me.tbUbahHarga.Size = New System.Drawing.Size(177, 25)
+        Me.tbUbahHarga.Size = New System.Drawing.Size(264, 33)
         Me.tbUbahHarga.TabIndex = 11
         '
         'btnUbah
         '
         Me.btnUbah.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnUbah.Location = New System.Drawing.Point(277, 205)
+        Me.btnUbah.Location = New System.Drawing.Point(416, 315)
+        Me.btnUbah.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.btnUbah.Name = "btnUbah"
-        Me.btnUbah.Size = New System.Drawing.Size(75, 23)
+        Me.btnUbah.Size = New System.Drawing.Size(112, 35)
         Me.btnUbah.TabIndex = 13
         Me.btnUbah.Text = "Ubah"
         Me.btnUbah.UseVisualStyleBackColor = True
         '
         'tbUbahNama
         '
-        Me.tbUbahNama.Location = New System.Drawing.Point(20, 64)
+        Me.tbUbahNama.Location = New System.Drawing.Point(30, 98)
+        Me.tbUbahNama.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.tbUbahNama.Name = "tbUbahNama"
-        Me.tbUbahNama.Size = New System.Drawing.Size(177, 25)
+        Me.tbUbahNama.Size = New System.Drawing.Size(264, 33)
         Me.tbUbahNama.TabIndex = 4
         '
         'Label2
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(237, 114)
+        Me.Label2.Location = New System.Drawing.Point(356, 175)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(86, 16)
+        Me.Label2.Size = New System.Drawing.Size(132, 23)
         Me.Label2.TabIndex = 12
         Me.Label2.Text = "Harga Barang"
         '
@@ -239,35 +296,39 @@ Partial Class FormUtamaAdmin
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Arial", 9.75!)
-        Me.Label3.Location = New System.Drawing.Point(20, 35)
+        Me.Label3.Location = New System.Drawing.Point(30, 54)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(86, 16)
+        Me.Label3.Size = New System.Drawing.Size(130, 23)
         Me.Label3.TabIndex = 5
         Me.Label3.Text = "Nama Barang"
         '
         'tbUbahMerek
         '
-        Me.tbUbahMerek.Location = New System.Drawing.Point(234, 64)
+        Me.tbUbahMerek.Location = New System.Drawing.Point(351, 98)
+        Me.tbUbahMerek.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.tbUbahMerek.Name = "tbUbahMerek"
-        Me.tbUbahMerek.Size = New System.Drawing.Size(177, 25)
+        Me.tbUbahMerek.Size = New System.Drawing.Size(264, 33)
         Me.tbUbahMerek.TabIndex = 6
         '
         'cbUbahJenis
         '
         Me.cbUbahJenis.FormattingEnabled = True
         Me.cbUbahJenis.Items.AddRange(New Object() {"Alat Pancing", "Joran", "Senar", "Mata Kail", "Pelet"})
-        Me.cbUbahJenis.Location = New System.Drawing.Point(20, 142)
+        Me.cbUbahJenis.Location = New System.Drawing.Point(30, 218)
+        Me.cbUbahJenis.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.cbUbahJenis.Name = "cbUbahJenis"
-        Me.cbUbahJenis.Size = New System.Drawing.Size(174, 26)
+        Me.cbUbahJenis.Size = New System.Drawing.Size(259, 35)
         Me.cbUbahJenis.TabIndex = 10
         '
         'Label8
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Arial", 9.75!)
-        Me.Label8.Location = New System.Drawing.Point(234, 35)
+        Me.Label8.Location = New System.Drawing.Point(351, 54)
+        Me.Label8.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(88, 16)
+        Me.Label8.Size = New System.Drawing.Size(135, 23)
         Me.Label8.TabIndex = 7
         Me.Label8.Text = "Merek Barang"
         '
@@ -275,9 +336,10 @@ Partial Class FormUtamaAdmin
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Arial", 9.75!)
-        Me.Label9.Location = New System.Drawing.Point(20, 115)
+        Me.Label9.Location = New System.Drawing.Point(30, 177)
+        Me.Label9.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(82, 16)
+        Me.Label9.Size = New System.Drawing.Size(124, 23)
         Me.Label9.TabIndex = 9
         Me.Label9.Text = "Jenis Barang"
         '
@@ -287,9 +349,11 @@ Partial Class FormUtamaAdmin
         Me.GroupBox3.Controls.Add(Me.tbHapusNama)
         Me.GroupBox3.Controls.Add(Me.Label11)
         Me.GroupBox3.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox3.Location = New System.Drawing.Point(570, 584)
+        Me.GroupBox3.Location = New System.Drawing.Point(855, 898)
+        Me.GroupBox3.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(431, 168)
+        Me.GroupBox3.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.GroupBox3.Size = New System.Drawing.Size(646, 258)
         Me.GroupBox3.TabIndex = 16
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Hapus Data Barang"
@@ -297,85 +361,56 @@ Partial Class FormUtamaAdmin
         'btnHapus
         '
         Me.btnHapus.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnHapus.Location = New System.Drawing.Point(174, 119)
+        Me.btnHapus.Location = New System.Drawing.Point(261, 183)
+        Me.btnHapus.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.btnHapus.Name = "btnHapus"
-        Me.btnHapus.Size = New System.Drawing.Size(75, 23)
+        Me.btnHapus.Size = New System.Drawing.Size(112, 35)
         Me.btnHapus.TabIndex = 13
         Me.btnHapus.Text = "Hapus"
         Me.btnHapus.UseVisualStyleBackColor = True
         '
         'tbHapusNama
         '
-        Me.tbHapusNama.Location = New System.Drawing.Point(133, 72)
+        Me.tbHapusNama.Location = New System.Drawing.Point(200, 111)
+        Me.tbHapusNama.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.tbHapusNama.Name = "tbHapusNama"
-        Me.tbHapusNama.Size = New System.Drawing.Size(177, 25)
+        Me.tbHapusNama.Size = New System.Drawing.Size(264, 33)
         Me.tbHapusNama.TabIndex = 4
         '
         'Label11
         '
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Arial", 9.75!)
-        Me.Label11.Location = New System.Drawing.Point(171, 38)
+        Me.Label11.Location = New System.Drawing.Point(256, 58)
+        Me.Label11.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(86, 16)
+        Me.Label11.Size = New System.Drawing.Size(130, 23)
         Me.Label11.TabIndex = 5
         Me.Label11.Text = "Nama Barang"
-        '
-        'tbTambahStok
-        '
-        Me.tbTambahStok.Location = New System.Drawing.Point(437, 64)
-        Me.tbTambahStok.Name = "tbTambahStok"
-        Me.tbTambahStok.Size = New System.Drawing.Size(177, 25)
-        Me.tbTambahStok.TabIndex = 14
-        '
-        'Label10
-        '
-        Me.Label10.AutoSize = True
-        Me.Label10.Font = New System.Drawing.Font("Arial", 9.75!)
-        Me.Label10.Location = New System.Drawing.Point(437, 35)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(79, 16)
-        Me.Label10.TabIndex = 15
-        Me.Label10.Text = "Stok Barang"
-        '
-        'tbUbahStok
-        '
-        Me.tbUbahStok.Location = New System.Drawing.Point(440, 64)
-        Me.tbUbahStok.Name = "tbUbahStok"
-        Me.tbUbahStok.Size = New System.Drawing.Size(177, 25)
-        Me.tbUbahStok.TabIndex = 16
-        '
-        'Label12
-        '
-        Me.Label12.AutoSize = True
-        Me.Label12.Font = New System.Drawing.Font("Arial", 9.75!)
-        Me.Label12.Location = New System.Drawing.Point(440, 35)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(79, 16)
-        Me.Label12.TabIndex = 17
-        Me.Label12.Text = "Stok Barang"
         '
         'btnKeluar
         '
         Me.btnKeluar.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnKeluar.Location = New System.Drawing.Point(1126, 729)
+        Me.btnKeluar.Location = New System.Drawing.Point(1689, 1122)
+        Me.btnKeluar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.btnKeluar.Name = "btnKeluar"
-        Me.btnKeluar.Size = New System.Drawing.Size(75, 23)
+        Me.btnKeluar.Size = New System.Drawing.Size(112, 35)
         Me.btnKeluar.TabIndex = 17
         Me.btnKeluar.Text = "Keluar"
         Me.btnKeluar.UseVisualStyleBackColor = True
         '
         'FormUtamaAdmin
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1242, 803)
+        Me.ClientSize = New System.Drawing.Size(1863, 1235)
         Me.Controls.Add(Me.btnKeluar)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.DataGridViewAdmin)
         Me.Controls.Add(Me.Label1)
+        Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Name = "FormUtamaAdmin"
         Me.Text = "Form1"
         CType(Me.DataGridViewAdmin, System.ComponentModel.ISupportInitialize).EndInit()
